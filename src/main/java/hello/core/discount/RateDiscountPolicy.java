@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Primary
-@MainDiscountPolicy
+//@MainDiscountPolicy
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
