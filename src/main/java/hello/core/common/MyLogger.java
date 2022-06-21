@@ -1,6 +1,7 @@
 package hello.core.common;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -8,7 +9,8 @@ import javax.annotation.PreDestroy;
 import java.util.UUID;
 
 @Component
-@Scope(value = "request")   // 해당 빈은 HTTP요청 당 하나씩 생성되고, HTTP 요청이 끝나느 시점에 소멸된다.
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)   // 해당 빈은 HTTP요청 당 하나씩 생성되고, HTTP 요청이 끝나느 시점에 소멸된다.
+// proxyMode = ScopedProxyMode.TARGET_CLASS 는 가짜 프록시 객체를 주입하고 가짜 프록시 객체는 요청이 오면 그때 내부에서 진짜 빈을 요청하는 위임 로직이 들어있다.
 public class MyLogger {
 
     private String uuid;
