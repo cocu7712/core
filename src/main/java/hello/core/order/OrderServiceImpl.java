@@ -10,25 +10,24 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-//@RequiredArgsConstructor //final이 붙은 생성자를 자동으로 만들어 준다.
+@RequiredArgsConstructor //final이 붙은 생성자를 자동으로 만들어 준다.
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
+/*    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
+    }*/
+
     //일반 메서드 주입
-/*
-    @Autowired
+  /*  @Autowired
     public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
         this.discountPolicy = discountPolicy;
         this.memberRepository = memberRepository;
-    }
-*/
+    }*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
